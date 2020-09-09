@@ -1,1 +1,1 @@
-# stargazr
+# Stargazr
