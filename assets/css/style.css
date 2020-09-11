@@ -1,0 +1,13 @@
+:root{
+    box-sizing: border-box;
+    --primary-color: #1B1B1B;
+}
+
+body{
+    font-family: 'Gruppo', cursive;
+    background-color: var(--primary-color);
+}
+
+#jumbotron-header{
+    font-family: 'Roboto', sans-serif;
+}

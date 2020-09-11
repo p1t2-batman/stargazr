@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Stargazr</title>
 </head>
 <body>
-    
+    <header>
+        <div id="jumbotron">
+            <div id="jumbotron-header">
+                <h1>Stargazr</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="sky-header">
+            <h2>Sky Map</h2>
+        </div>
+        <div id="city-search-container">
+            <p>Enter a city:</p>
+            <input type="text" name="city" value="Enter a city"/>
+            <button type="submit">Submit</button>
+            <div id="search-history">
+                <ul id="search-history-list">
+                    <li id="search-history-item">Austin</li>
+                    <li id="search-history-item">McAllen</li>
+                </ul>
+            </div>
+        </div>
+        <div id="map-container">
+
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
     crossorigin="anonymous"></script>
