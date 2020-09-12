@@ -1,21 +1,22 @@
 :root{
-    --primary-color: #1B1B1B;
-    --secondary-color: #666666;
-    --tertiary-color: #C58ED1;
-    
+    --dark-grey: #1B1B1B;
+    --light-grey: #666666;
+    --light-purple: #C58ED1;
+    --light-black: #000000a9;
 }
 
 /* General Styling */
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     margin: 0;
     font-family: 'Gruppo', cursive;
-    background-color: var(--primary-color);
-    color: var(--tertiary-color);
+    background-color: var(--dark-grey);
+    color: var(--light-purple);
     font-size: 1.5rem;
 }
 
@@ -27,20 +28,27 @@ main div {
     padding: 10px;
 }
 
-
-
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
 /* #city-search-container{
     background-color: blue;
 }
 
 #map-container{
     background-color: red;
-} */
+} 
+#city-search-container, #map-container{
+    padding: 15px;
+}
+*/
 
 /* Hero Styling */
 h1{
     margin: 0;
-    color: var(--tertiary-color);
+    color: var(--light-purple);
 }
 
 #hero{
@@ -54,18 +62,7 @@ h1{
 
 }
 
-/*
-
-
-#city-search-container, #map-container{
-    padding: 15px;
-}
-
-.center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } 
+/* Header Styling */
 .heading {
     align-self: center;
     color: #aaa;
@@ -97,6 +94,78 @@ h1{
     background-image: linear-gradient(to left, transparent 10%, #6f4c99 100%);
   }
 
+/* City Search Container Styling */
+
+/* Input Styling */
+#input-container label {
+    color: var(--light-purple);
+    font-size: 1.5rem;
+    line-height: 1.5;
+    position: relative;
+    bottom: 10px;
+    left: 0;
+}
+#input-container input[type=text]{
+    background-color: white;
+    margin-right: 10px;
+    width: 20rem;
+}
+#input-container button
+{
+    background-color: var(--light-grey);
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    float: right;
+}
+
+#input-container button:hover{
+    background-color: var(--light-purple);
+}
+
+#input-container button > span{
+    color: white;
+    line-height: 1.5;
+    padding: 0;
+}
+
+#input-container button > span:hover{
+    color: var(--dark-grey);
+    font-weight: bold;
+}
+
+
+/* City History List styling */
+
+#search-history-item{
+    background-color: var(--light-grey);
+    margin: 10px 0;
+    padding: 10px 30px;
+    color: white;
+    font-weight: bold;
+}
+
+#search-history-item:hover{
+    background-color: var(--light-purple);
+    color: var(--dark-grey);
+}
+
+/* Weather Styling */
+/* Section Styling */
+#weather-container {
+    padding: 15px 25px;
+}
+
+#weather-container section{
+    background-color: var(--light-black);
+    margin: 25px;
+    border-radius: 10px;
+}
+
+#moon{
+    float: right;
+}
+/* Responsive Styling */
 @media screen and (min-width: 580px) {
     /* div{
         display: flex;
