@@ -1,13 +1,125 @@
 :root{
-    box-sizing: border-box;
     --primary-color: #1B1B1B;
+    --secondary-color: #666666;
+    --tertiary-color: #C58ED1;
+    
+}
+
+/* General Styling */
+*{
+    margin: 0;
+    padding: 0;
 }
 
 body{
+    margin: 0;
     font-family: 'Gruppo', cursive;
     background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
 }
 
-#jumbotron-header{
-    font-family: 'Roboto', sans-serif;
+main{
+    margin: 0px 50px;
 }
+
+main div {
+    padding: 10px;
+}
+
+
+
+/* #city-search-container{
+    background-color: blue;
+}
+
+#map-container{
+    background-color: red;
+} */
+
+/* Hero Styling */
+h1{
+    margin: 0;
+    color: var(--tertiary-color);
+}
+
+#hero{
+    background-image: url("../images/stargazr-bg.jpg");
+    padding: 35px;
+    padding-top: 50px;
+} 
+
+#hero-header{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+/*
+
+
+#city-search-container, #map-container{
+    padding: 15px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+.heading {
+    align-self: center;
+    color: #aaa;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+  }
+.heading::before, .heading::after {
+    content: '';
+    display: block;
+    height: .075em;
+    min-height: 1px;
+    width: 200%;
+    position: absolute;
+    top: 50%;
+  }
+.heading::before {
+    left: -20px;
+    transform: translate(-100%, -50%);
+    background-image: linear-gradient(to right, transparent 10%, #6f4c99 100%);
+  }
+.heading::after{
+    right: -20px;
+    transform: translate(100%, -50%);
+    background-image: linear-gradient(to left, transparent 10%, #6f4c99 100%);
+  }
+
+@media screen and (min-width: 580px) {
+    /* div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .heading{
+        font-size: 2.8rem;
+    }
+    .heading::before, .heading::after {
+        width: 100%;
+    } */
+
+}
+
+@media screen and (min-width: 768px) {
+
+}
+
+@media screen and (min-width: 992px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+} */

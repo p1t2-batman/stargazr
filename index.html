@@ -10,30 +10,35 @@
 </head>
 <body>
     <header>
-        <div id="jumbotron">
-            <div id="jumbotron-header">
+        <div id="hero">
+            <div id="hero-header">
                 <h1>Stargazr</h1>
             </div>
         </div>
     </header>
     <main>
-        <div id="sky-header">
-            <h2>Sky Map</h2>
+        <div class="center" id="sky-header">
+            <h2 class="heading">Sky Map</h2>
         </div>
-        <div id="city-search-container">
-            <p>Enter a city:</p>
-            <input type="text" name="city" value="Enter a city"/>
-            <button type="submit">Submit</button>
-            <div id="search-history">
-                <ul id="search-history-list">
-                    <li id="search-history-item">Austin</li>
-                    <li id="search-history-item">McAllen</li>
-                </ul>
+        <div class="row">
+            <div class="col s4" id="city-search-container">
+                <div class="input-field">
+                    <label for="city">Enter a City:</label>
+                    <input type="text" id="city" name="city" />
+                    <button type="submit">Submit</button>
+                </div>
+                <div id="search-history">
+                    <ul id="search-history-list">
+                        <li id="search-history-item">Austin</li>
+                        <li id="search-history-item">McAllen</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s8" id="map-container">
+                Content
             </div>
         </div>
-        <div id="map-container">
 
-        </div>
     </main>
     <footer>
 
