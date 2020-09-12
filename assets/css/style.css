@@ -160,10 +160,37 @@ h1{
     background-color: var(--light-black);
     margin: 25px;
     border-radius: 10px;
+    padding: 25px 50px;
 }
 
 #moon{
     float: right;
+}
+
+section h3{
+    text-align: center;
+    font-weight: bold;
+}
+
+section p, section h4{
+    color: white;
+}
+
+section span{
+    color: var(--light-purple);
+}
+
+/* Weather Section Styling */
+#weather-icon{
+    text-align: right;
+    padding-right: 30px;
+}
+
+
+/* Sun & Moon Section Styling */
+
+#moon img{
+    margin: 20px;
 }
 /* Responsive Styling */
 @media screen and (min-width: 580px) {
