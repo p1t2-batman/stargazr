@@ -1,92 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Stargazr</title>
 </head>
+
 <body>
-    <header>
-        <div id="hero">
-            <div id="hero-header">
-                <h1>Stargazr</h1>
-            </div>
-        </div>
+    <header id="hero">
+        <h1>STARGAZR</h1>
     </header>
     <main>
-        <div>
+        <section>
             <div class="center" id="sky-header">
-                <h2 class="heading">Sky Map</h2>
+                <h2 class="heading">Virtual Sky</h2>
             </div>
-            <div class="row">
+            <div class="row star-map">
                 <div class="col s3" id="city-search-container">
-                    <div id="input-container">
-                        <label class="col s12" for="city">Enter a City:</label>
-                        <input class="col s8 z-depth-2" type="text" id="city" name="city" />
-                        <button class="col s2 z-depth-2 waves-effect waves-light" type="submit"><span class="material-icons">search</span></button>
+                    <div class="city-search">
+                        <div class="input-field">
+                            <input type="text" id="city" name="city" />
+                            <label for="city">City</label>
+                        </div>
+                        <button class="z-depth-2 waves-effect waves-light" id="search-btn"><span
+                                class="material-icons">search</span></button>
                     </div>
-                    <div class="col s12" id="search-history">
+                    <div id="search-history">
                         <ul id="search-history-list">
-                            <li class="z-depth-2" id="search-history-item">Austin</li>
-                            <li class="z-depth-2" id="search-history-item">McAllen</li>
+                            <li class="z-depth-2 waves-effect" id="search-history-item">Austin</li>
+                            <li class="z-depth-2 waves-effect" id="search-history-item">McAllen</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col s9 center" id="map-container">
-                    <iframe width="1200" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://virtualsky.lco.global/embed/index.html?longitude=-119.86286000000001&latitude=34.4326&projection=lambert&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273" allowTransparency="true"></iframe>
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://virtualsky.lco.global/embed/index.html?longitude=-119.86286000000001&latitude=34.4326&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273"
+                        allowTransparency="true"></iframe>
                 </div>
             </div>
-        </div>
-        <div>
+        </section>
+        <section>
             <div class="center" id="weather-header">
                 <h2 class="heading">Weather</h2>
             </div>
-            <div class="row" id="weather-container">
-                <section class="col s5" id="weather">
-                    <h3>Tonight's Weather</h3>
-                    <div class="row">
-                        <div class="col s6" id="weather-icon">
-                            <img src="https://via.placeholder.com/150">
-                        </div>
-                        <div class="col s6" id="weather-info">
-                            <p>City: <span id="city">Austin</span></p>
-                            <p>Temperature: <span id="temp">98.7</span></p>
-                            <p>Clouds: <span id="clouds">light</span></p>
-                            <p>Rain Chance: <span id="rain">80%</span></p>
-                        </div>
-                    </div>
-                </section>
-                <section class="col s6" id="moon">
-                    <h3>Sun & Moon</h3>
-                    <div class="row">
-                        <div class="col s6 center" id="moon">
-                            <p>Moon</p>
-                            <img src="https://via.placeholder.com/100">
-                            <p>Rise: <span id="moon-rise">8 PM</span></p>
-                            <p>Set: <span id="moon-set">6 AM</span></p>
-                        </div>
-                        <div class="col s6 center" id="sun">
-                            <p>Sun</h4>
-                            <img src="https://via.placeholder.com/100">
-                            <p>Rise: <span id="sun-rise">6 AM</span></p>
-                            <p>Set: <span id="sun-set">8 PM</span></p>
-                        </div>
-                    </div>
-                </section>
+            <div id="weather-container">
+                <div class="weather-card">
+                    <h4>6 PM</h4>
+                    <p>Temp: </p>
+                    <p>Cloudiness: %</p>
+                    <p>Rain: %</p>
+                </div>
+                <div class="weather-card">
+                    <h4>9 PM</h4>
+                    <p>Temp: </p>
+                    <p>Cloudiness: %</p>
+                    <p>Rain: %</p>
+                </div>
+                <div class="weather-card">
+                    <h4>12 AM</h4>
+                    <p>Temp: </p>
+                    <p>Cloudiness: %</p>
+                    <p>Rain: %</p>
+                </div>
+                <div class="weather-card">
+                    <h4>3 AM</h4>
+                    <p>Temp: </p>
+                    <p>Cloudiness: %</p>
+                    <p>Rain: %</p>
+                </div>
+                <div class="weather-card">
+                    <h4>6 AM</h4>
+                    <p>Temp: </p>
+                    <p>Cloudiness: %</p>
+                    <p>Rain: %</p>
+                </div>
             </div>
-        </div>
+            <div id="sun-moon">
+                <div id="sun-heading">
+                    <h4>Sun</h4>
+                </div>
+                <div id="sun">
+                    <p>Sunrise: </p>
+                    <p>Sunset: </p>
+                </div>
+                <div id="moon-heading">
+                    <h4>Moon</h4>
+                </div>
+                <div id="moon">
+                    <p>Moon Phase:</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
-
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"></script>
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-:root{
+:root {
     --dark-grey: #1B1B1B;
     --light-grey: #666666;
     --light-purple: #C58ED1;
@@ -6,60 +6,54 @@
 }
 
 /* General Styling */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
-    font-family: 'Gruppo', cursive;
+    font-family: 'Roboto', 'san-serif';
+    font-weight: 300;
     background-color: var(--dark-grey);
     color: var(--light-purple);
     font-size: 1.5rem;
 }
 
-main{
+main {
     margin: 0px 50px;
 }
 
-main div {
-    padding: 10px;
+button {
+    border: none;
 }
 
 .center {
     display: flex;
     flex-direction: column;
     align-items: center;
-  } 
-/* #city-search-container{
-    background-color: blue;
 }
-
-#map-container{
-    background-color: red;
-} 
-#city-search-container, #map-container{
-    padding: 15px;
-}
-*/
 
 /* Hero Styling */
-h1{
+#hero h1 {
+    font-size: 4em;
+    color: #aaa;
+    font-family: 'Gruppo', cursive;
+    text-transform: none;
+    padding: 20px 40px;
     margin: 0;
-    color: var(--light-purple);
+    margin-left: 100px;
 }
 
-#hero{
+#hero {
     background-image: url("../images/stargazr-bg.jpg");
-    padding: 35px;
-    padding-top: 50px;
-} 
-
-#hero-header{
-    font-family: 'Roboto', sans-serif;
-
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 94%;
+    display: flex;
+    align-items: center;
 }
 
 /* Header Styling */
@@ -72,126 +66,181 @@ h1{
     display: inline-block;
     position: relative;
     padding: 10px;
-    font-family: 'Roboto', sans-serif;
-  }
-.heading::before, .heading::after {
+    font-family: 'Gruppo', 'cursive';
+}
+
+.heading::before,
+.heading::after {
     content: '';
     display: block;
     height: .075em;
     min-height: 1px;
-    width: 200%;
+    width: 500px;
     position: absolute;
     top: 50%;
-  }
+}
+
 .heading::before {
     left: -20px;
     transform: translate(-100%, -50%);
     background-image: linear-gradient(to right, transparent 10%, #6f4c99 100%);
-  }
-.heading::after{
+}
+
+.heading::after {
     right: -20px;
     transform: translate(100%, -50%);
     background-image: linear-gradient(to left, transparent 10%, #6f4c99 100%);
-  }
+}
+
+/* Virtual Map Styling */
+#stars {
+    width: 800px;
+    height: 800px;
+    border: none;
+    margin: 0;
+}
+
+.star-map {
+    margin: 10px 0;
+}
+
+iframe {
+    height: 600px;
+    width: 1200px;
+}
 
 /* City Search Container Styling */
 
 /* Input Styling */
-#input-container label {
-    color: var(--light-purple);
-    font-size: 1.5rem;
-    line-height: 1.5;
-    position: relative;
-    bottom: 10px;
-    left: 0;
+input:focus {
+    border-bottom: 1px solid var(--light-purple) !important;
+    box-shadow: 0 1px 0 0 var(--light-purple) !important;
 }
-#input-container input[type=text]{
-    background-color: white;
-    margin-right: 10px;
-    width: 20rem;
+
+label {
+    font-family: 'Roboto', 'san-serif';
 }
-#input-container button
-{
+
+label.active {
+    color: var(--light-purple) !important;
+    font-family: 'Roboto', 'san-serif';
+}
+
+.city-search {
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    flex-grow: 1;
+}
+
+#search-btn {
     background-color: var(--light-grey);
-    height: 3rem;
+    height: 48px;
+    margin: 0 0 8px 10px;
     width: 3rem;
-    border: none;
-    float: right;
-}
-
-#input-container button:hover{
-    background-color: var(--light-purple);
-}
-
-#input-container button > span{
     color: white;
+}
+
+#search-btn:hover{
+    background-color: var(--light-purple);
+    color: var(--dark-grey);
+}
+
+#search-btn > span{
     line-height: 1.5;
     padding: 0;
 }
 
-#input-container button > span:hover{
-    color: var(--dark-grey);
+#search-btn:hover span{
     font-weight: bold;
 }
-
-
 /* City History List styling */
 
-#search-history-item{
+#search-history-item {
     background-color: var(--light-grey);
-    margin: 10px 0;
     padding: 10px 30px;
+    margin-bottom: 5px;
     color: white;
-    font-weight: bold;
+    display: list-item;
 }
 
-#search-history-item:hover{
+#search-history-item:hover {
     background-color: var(--light-purple);
     color: var(--dark-grey);
 }
 
-/* Weather Styling */
 /* Section Styling */
+/* Weather Section Styling */
 #weather-container {
-    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
 }
 
-#weather-container section{
-    background-color: var(--light-black);
-    margin: 25px;
-    border-radius: 10px;
-    padding: 25px 50px;
+.weather-card {
+    width: 200px;
+    margin: 0 40px;
+    margin-bottom: 20px;
+    font-family: 'Roboto', 'san-serif';
+    font-weight: 300;
+    border: solid 1px var(--light-grey);
+    border-radius: 2px;
 }
 
-#moon{
-    float: right;
-}
-
-section h3{
+.weather-card h4 {
     text-align: center;
-    font-weight: bold;
+    color: white;
+    font-family: 'Gruppo', 'cursive';
 }
 
-section p, section h4{
+.weather-card p {
+    padding: 10px;
+}
+
+/* Sun & Moon Section Styling */
+#sun-moon {
+    display: flex;
+    justify-content: center;
+    border: solid 1px var(--light-grey);
+    border-radius: 2px;
+    width: 650px;
+    margin: 20px auto 40px auto;
+}
+
+#sun-moon h4 {
+    font-family: 'Gruppo', 'cursive';
     color: white;
 }
 
-section span{
-    color: var(--light-purple);
+#sun-heading, #moon-heading {
+    padding: 10px;
 }
 
-/* Weather Section Styling */
-#weather-icon{
-    text-align: right;
-    padding-right: 30px;
+#moon-heading {
+    margin-left: 50px;
 }
 
+#sun {
+    flex-direction: column;
+    margin: 20px;
+    margin-right: 50px;
+}
 
-/* Sun & Moon Section Styling */
-
-#moon img{
+#moon {
+    flex-direction: column;
     margin: 20px;
 }
+
+/* Footer Style */
+footer {
+    background-image: url("../images/stargazr-bg.jpg");
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 94%;
+}
+
 /* Responsive Styling */
 @media screen and (min-width: 580px) {
     /* div{
@@ -208,14 +257,10 @@ section span{
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {}
 
-}
+@media screen and (min-width: 992px) {}
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {}
 
-}
-
-@media screen and (min-width: 1200px) {
-
-} */
+*/
