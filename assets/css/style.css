@@ -107,6 +107,8 @@ button {
 iframe {
     height: 600px;
     width: 1200px;
+    border: 1px solid var(--light-grey);
+    border-radius: 2px;
 }
 
 /* City Search Container Styling */
