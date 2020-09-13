@@ -26,7 +26,7 @@
                 <div class="col s3" id="city-search-container">
                     <div class="city-search">
                         <div class="input-field">
-                            <input type="text" id="city" name="city" />
+                            <input autocomplete="off" type="text" id="city" name="city" />
                             <label for="city">City</label>
                         </div>
                         <button class="z-depth-2 waves-effect waves-light" id="search-btn"><span
@@ -46,41 +46,12 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="hide" id="weather-section">
             <div class="center" id="weather-header">
                 <h2 class="heading">Weather</h2>
             </div>
             <div id="weather-container">
-                <div class="weather-card">
-                    <h4>6 PM</h4>
-                    <p>Temp: </p>
-                    <p>Cloudiness: %</p>
-                    <p>Rain: %</p>
-                </div>
-                <div class="weather-card">
-                    <h4>9 PM</h4>
-                    <p>Temp: </p>
-                    <p>Cloudiness: %</p>
-                    <p>Rain: %</p>
-                </div>
-                <div class="weather-card">
-                    <h4>12 AM</h4>
-                    <p>Temp: </p>
-                    <p>Cloudiness: %</p>
-                    <p>Rain: %</p>
-                </div>
-                <div class="weather-card">
-                    <h4>3 AM</h4>
-                    <p>Temp: </p>
-                    <p>Cloudiness: %</p>
-                    <p>Rain: %</p>
-                </div>
-                <div class="weather-card">
-                    <h4>6 AM</h4>
-                    <p>Temp: </p>
-                    <p>Cloudiness: %</p>
-                    <p>Rain: %</p>
-                </div>
+                
             </div>
             <div id="sun-moon">
                 <div id="sun-heading">
@@ -104,6 +75,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"
+        integrity="sha512-Dz4zO7p6MrF+VcOD6PUbA08hK1rv0hDv/wGuxSUjImaUYxRyK2gLC6eQWVqyDN9IM1X/kUA8zkykJS/gEVOd3w=="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
