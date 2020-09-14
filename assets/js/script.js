@@ -2,46 +2,13 @@ var appId = 'c91544c398fb201869e640762955d4c6'
 var cityInputEl = $('#city');
 var searchBtnEl = $('#search-btn');
 var weatherContainerEl = $('#weather-container');
+var cityListEl = $('#search-history-list');
+var cities = JSON.parse(localStorage.getItem('cities')) || [];
 
-var getWeatherByCity = function (city) {
+var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
 
-    return $.get(weatherUrl);
-};
-
-var getWeatherForCurrentLocation = function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-        console.log(pos);
-    });
-};
-
-var buildWeather = function (forecastData) {
-    weatherContainerEl.empty();
-    var weatherSectionEl = $('#weather-section');
-    weatherSectionEl.removeClass('hide');
-
-    $.each(forecastData, function(i, data) {
-
-        var weatherCardEl = $('<div class="weather-card">');
-        weatherContainerEl.append(weatherCardEl);
-
-        var weatherHourEl = $('<h4>').text(moment(data.dt * 1000).format('hA'));
-        weatherCardEl.append(weatherHourEl);
-
-        var tempEl = $('<p>').html('Temp: ' + Math.round(data.main.temp) + '&deg;');
-        weatherCardEl.append(tempEl);
-
-        var cloudsEl = $('<p>').text('Cloudiness: ' + data.clouds.all +'%');
-        weatherCardEl.append(cloudsEl);
-
-        var rainEl = $('<p>').text('Rain: ' + data.pop + '%');
-        weatherCardEl.append(rainEl);
-    })
-};
-
-searchBtnEl.on('click', function () {
-    var city = cityInputEl.val().trim();
-    getWeatherByCity(city)
+    $.get(weatherUrl)
         .then(function (data) {
             // set start of window
             var start = moment().minutes(0).seconds(0);
@@ -75,8 +42,108 @@ searchBtnEl.on('click', function () {
             });
 
             buildWeather(data.list);
+        })
+        .then(function () {
+            if (!isButtonClick) {
+                cities.unshift(city);
+                cities.length = cities.length > 10 ? 10 : cities.length;
+                localStorage.setItem('cities', JSON.stringify(cities));
+
+                createListItems(cities);
+            }
+        }, function () {
+            alert('Could not find city');
         });
+};
+
+var getWeatherForCurrentLocation = function () {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+        console.log(pos);
+    });
+};
+
+// building weather cards to hold data
+var buildWeather = function (forecastData) {
+    weatherContainerEl.empty();
+    var weatherSectionEl = $('#weather-section');
+    weatherSectionEl.removeClass('hide');
+
+    $.each(forecastData, function (i, data) {
+
+        var weatherCardEl = $('<div class="weather-card">');
+        weatherContainerEl.append(weatherCardEl);
+
+        var weatherHourEl = $('<h4>').text(moment(data.dt * 1000).format('hA'));
+        weatherCardEl.append(weatherHourEl);
+
+        var tempEl = $('<p>').html('Temp: <span>' + Math.round(data.main.temp) + '&deg;</span>');
+        weatherCardEl.append(tempEl);
+
+        var cloudsEl = $('<p>').html('Cloud Cover: <span>' + data.clouds.all + '%</span>');
+        weatherCardEl.append(cloudsEl);
+
+        var rainEl = $('<p>').html('Rain: <span>' + data.pop * 100 + '%</span>');
+        weatherCardEl.append(rainEl);
+    })
+};
+
+var createListItems = function (cities) {
+    cityListEl.empty();
+
+    $.each(cities, function (i, city) {
+        var cityEl = $('<li id="search-history-item">');
+        cityEl.text(city);
+        cityEl.on('click', function () {
+                getWeatherByCity(city, true);
+                sunAndMoon(city);
+        });
+
+        cityListEl.append(cityEl);
+    });
+};
+
+var sunAndMoon = function (city) {
+    
+    var dailyWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + appId;
+    var sunContainerEl = $('#sun');
+
+    var moonDate = moment().unix();
+    var moonPhaseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + moonDate;
+    var moonContainerEl = $('#moon');
+    
+    $.get(dailyWeatherUrl)
+        .then(function (data) {
+
+            var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise).format('LT') + '</span>');
+            sunContainerEl.empty();
+            sunContainerEl.append(sunriseEl);
+
+            var sunsetEl = $('<p>').html('Sunset: <span>' + moment(data.sys.sunset).format('LT') + '</span>');
+            sunContainerEl.append(sunsetEl);
+        });
+
+    $.get(moonPhaseUrl)
+        .then(function (data) {
+            var moonPhaseEl = $('<p>').html('Moon Phase: <span>' + data[0].Phase + '</span>');
+            moonContainerEl.empty();
+            moonContainerEl.append(moonPhaseEl);
+        });
+};
+
+searchBtnEl.on('click', function () {
+    var city = cityInputEl.val().trim();
+    cityInputEl.val('');
+
+    if (!city) {
+        return;
+    }
+
+    getWeatherByCity(city);
+    sunAndMoon(city);
 });
+
+createListItems(cities);
+
 
 // var createSkyMap = function() {
 //     var skyMapEl = $('<iframe src="https://virtualsky.lco.global/embed/index.html?longitude="' + longitude + '"&latitude="'  + latitude + '"&projection=polar">');

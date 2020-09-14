@@ -21,9 +21,9 @@ body {
     font-size: 1.5rem;
 }
 
-main {
+/* main {
     margin: 0px 50px;
-}
+} */
 
 button {
     border: none;
@@ -50,7 +50,7 @@ button {
     background-image: url("../images/stargazr-bg.jpg");
     height: 250px;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-position-y: 94%;
     display: flex;
     align-items: center;
@@ -107,9 +107,13 @@ button {
 
 iframe {
     height: 600px;
-    width: 1200px;
+    width: 100%;
     border: 1px solid var(--light-grey);
     border-radius: 2px;
+}
+
+#map-container {
+    padding-right: 30px;
 }
 
 /* City Search Container Styling */
@@ -140,6 +144,14 @@ label.active {
 
 #city {
     color: white !important;
+}
+
+#city-search-container {
+    padding-left: 30px;
+}
+
+#search-history-item {
+    cursor: pointer;
 }
 
 #search-btn {
@@ -210,14 +222,19 @@ label.active {
     padding: 10px;
 }
 
+.weather-card span {
+    color: white;
+}
+
 /* Sun & Moon Section Styling */
 #sun-moon {
     display: flex;
     justify-content: center;
     border: solid 1px var(--light-grey);
     border-radius: 2px;
-    width: 650px;
+    width: 1000px;
     margin: 20px auto 40px auto;
+    
 }
 
 #sun-moon h4 {
@@ -230,18 +247,21 @@ label.active {
 }
 
 #moon-heading {
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
-#sun {
+#sun, #moon {
     flex-direction: column;
     margin: 20px;
-    margin-right: 50px;
+   
 }
 
-#moon {
-    flex-direction: column;
-    margin: 20px;
+#sun p, #moon p {
+    white-space: nowrap;
+}
+
+#sun span, #moon span {
+    color: white;
 }
 
 /* Footer Style */
