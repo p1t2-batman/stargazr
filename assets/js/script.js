@@ -82,7 +82,7 @@ var buildWeather = function (forecastData) {
         var cloudsEl = $('<p>').html('Cloud Cover: <span>' + data.clouds.all + '%</span>');
         weatherCardEl.append(cloudsEl);
 
-        var rainEl = $('<p>').html('Rain: <span>' + data.pop * 100 + '%</span>');
+        var rainEl = $('<p>').html('Rain: <span>' + Math.round(data.pop * 100) + '%</span>');
         weatherCardEl.append(rainEl);
     })
 };
@@ -110,15 +110,15 @@ var sunAndMoon = function (city) {
     var moonDate = moment().unix();
     var moonPhaseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + moonDate;
     var moonContainerEl = $('#moon');
-    
+
     $.get(dailyWeatherUrl)
         .then(function (data) {
-
-            var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise).format('LT') + '</span>');
             sunContainerEl.empty();
+
+            var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise * 1000).format('LT') + '</span>');
             sunContainerEl.append(sunriseEl);
 
-            var sunsetEl = $('<p>').html('Sunset: <span>' + moment(data.sys.sunset).format('LT') + '</span>');
+            var sunsetEl = $('<p>').html('Sunset: <span>' + moment(data.sys.sunset * 1000).format('LT') + '</span>');
             sunContainerEl.append(sunsetEl);
         });
 
