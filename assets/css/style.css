@@ -277,6 +277,7 @@ label.active {
     flex-direction: row;
     text-align: center;
     margin: 0;
+    padding: 0;
 }
 #sun-moon h3 {
     font-size: 25px;
@@ -318,7 +319,7 @@ footer {
 }
 
 /* Responsive Styling */
-@media screen and (min-width: 580px) {
+@media screen and (max-width: 580px) {
     div{
         display: flex;
         flex-direction: column;
@@ -334,8 +335,8 @@ footer {
 
 }
 
-@media screen and (min-width: 768px) {}
+@media screen and (max-width: 768px) {}
 
-@media screen and (min-width: 992px) {}
+@media screen and (max-width: 992px) {}
 
-@media screen and (min-width: 1200px) {}
+@media screen and (max-width: 1200px) {}
