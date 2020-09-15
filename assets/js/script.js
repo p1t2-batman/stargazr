@@ -1,7 +1,7 @@
-var appId = 'c91544c398fb201869e640762955d4c6'
+var appId = 'c91544c398fb201869e640762955d4c6';
 var cityInputEl = $('#city');
 var searchBtnEl = $('#search-btn');
-var weatherContainerEl = $('#weather-container');
+var weatherContainerEl = $('.weather-container');
 var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 
@@ -69,12 +69,18 @@ var buildWeather = function (forecastData) {
     weatherSectionEl.removeClass('hide');
 
     $.each(forecastData, function (i, data) {
-
-        var weatherCardEl = $('<div class="weather-card">');
+        var weatherCardEl = $('<div class="weather-card col s3">');
         weatherContainerEl.append(weatherCardEl);
 
-        var weatherHourEl = $('<h4>').text(moment(data.dt * 1000).format('hA'));
+        var weatherHourEl = $('<h3>').text(moment(data.dt * 1000).format('hA'));
         weatherCardEl.append(weatherHourEl);
+
+        var weatherImg = data.weather[0].icon;
+        var weatherImgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + weatherImg + '@2x.png');
+        weatherCardEl.append(weatherImgEl);
+
+        var weatherDescEl = $('<p>').html('Desc: <span>' + data.weather[0].description + '</span>');
+        weatherCardEl.append(weatherDescEl);
 
         var tempEl = $('<p>').html('Temp: <span>' + Math.round(data.main.temp) + '&deg;</span>');
         weatherCardEl.append(tempEl);
@@ -114,6 +120,12 @@ var sunAndMoon = function (city) {
     $.get(dailyWeatherUrl)
         .then(function (data) {
             sunContainerEl.empty();
+            
+            var sunTitleEl = $('<h3>').text("Solar Schedule");
+            sunContainerEl.append(sunTitleEl);
+
+            var sunImgEl = $('<img>').attr('src',  './assets/images/sun.png');
+            sunContainerEl.append(sunImgEl);
 
             var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise * 1000).format('LT') + '</span>');
             sunContainerEl.append(sunriseEl);
@@ -124,8 +136,15 @@ var sunAndMoon = function (city) {
 
     $.get(moonPhaseUrl)
         .then(function (data) {
-            var moonPhaseEl = $('<p>').html('Moon Phase: <span>' + data[0].Phase + '</span>');
             moonContainerEl.empty();
+            var moonTitleEl = $('<h3>').text("Moon Phase");
+            moonContainerEl.append(moonTitleEl);
+
+            var moonImg = data[0].Index;
+            var moonImgEl = $('<img>').attr('src', './assets/images/moon/' + moonImg + '.png');
+            moonContainerEl.append(moonImgEl);
+
+            var moonPhaseEl = $('<p>').text(data[0].Phase);
             moonContainerEl.append(moonPhaseEl);
         });
 };

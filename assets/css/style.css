@@ -210,6 +210,7 @@ label.active {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
+    padding: 0 50px;
 }
 
 #weather-header h2 {
@@ -240,10 +241,11 @@ label.active {
     text-align: center;
     color: white;
     font-family: 'Gruppo', 'cursive';
+    margin: 20px 0 0 0;
 }
 
 .weather-card img{
-    padding-bottom: 10px;
+    height: 70px;
 }
 .weather-card p, .weather-card span{
     font-size: 16px;
@@ -251,6 +253,7 @@ label.active {
 
 .weather-card span {
     color: white;
+    text-transform: capitalize;
 }
 
 
@@ -280,10 +283,12 @@ label.active {
     color: white;
     font-family: 'Gruppo', 'cursive';
     margin: 10px 0 0 0;
+    text-transform: uppercase;
 }
 
 #sun-moon img{
     padding: 5px 0;
+    height: 70px;
 }
 #moon-heading {
     margin-left: 40px;
@@ -313,7 +318,7 @@ footer {
 
 /* Responsive Styling */
 @media screen and (min-width: 580px) {
-    /* div{
+    div{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -323,7 +328,8 @@ footer {
     }
     .heading::before, .heading::after {
         width: 100%;
-    } */
+    }
+
 
 }
 
