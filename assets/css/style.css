@@ -196,64 +196,102 @@ label.active {
 .hide {
     display: none;
 }
+#weather-section{
+    background-color: black;
+    height: 250px; 
+    border-top: 1px solid var(--light-grey);
+    border-bottom: 1px solid var(--light-grey);
+}
 
-#weather-container {
+#weather-header{
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#weather-header h2 {
+    display: inline;
+    font-size: 30px;
+} 
+
+
+#weather-header h2 > span, #sun-moon-heading h2 > span{
+    color: white;
+    font-size: 40px;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: row; 
 }
 
 .weather-card {
-    width: 200px;
-    margin: 0 40px;
     margin-bottom: 20px;
     font-family: 'Roboto', 'san-serif';
     font-weight: 300;
-    border: solid 1px var(--light-grey);
-    border-radius: 2px;
+    text-align: center;
 }
 
-.weather-card h4 {
+.weather-card h3 {
+    font-size: 30px;
     text-align: center;
     color: white;
     font-family: 'Gruppo', 'cursive';
 }
 
-.weather-card p {
-    padding: 10px;
+.weather-card img{
+    padding-bottom: 10px;
+}
+.weather-card p, .weather-card span{
+    font-size: 16px;
 }
 
 .weather-card span {
     color: white;
 }
 
+
 /* Sun & Moon Section Styling */
-#sun-moon {
+#sun-moon-heading{
     display: flex;
     justify-content: center;
-    border: solid 1px var(--light-grey);
-    border-radius: 2px;
-    width: 1000px;
-    margin: 20px auto 40px auto;
-    
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
 }
 
-#sun-moon h4 {
-    font-family: 'Gruppo', 'cursive';
+#sun-moon-heading h2{
+    font-size: 30px;
+    margin: 20px 0 0 0;
+}
+
+#sun-moon-container{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 0;
+}
+#sun-moon h3 {
+    font-size: 25px;
+    text-align: center;
     color: white;
+    font-family: 'Gruppo', 'cursive';
+    margin: 10px 0 0 0;
 }
 
-#sun-heading, #moon-heading {
-    padding: 10px;
+#sun-moon img{
+    padding: 5px 0;
 }
-
 #moon-heading {
     margin-left: 40px;
 }
 
 #sun, #moon {
     flex-direction: column;
-    margin: 20px;
-   
+    padding: 0;
 }
 
 #sun p, #moon p {
