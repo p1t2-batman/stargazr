@@ -4,6 +4,8 @@ var searchBtnEl = $('#search-btn');
 var weatherContainerEl = $('.weather-container');
 var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
+var virtualSkyEl = $('#virtual-sky');
+var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273'; // &longitude=-119.86286000000001&latitude=34.4326
 
 var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
@@ -109,13 +111,11 @@ var createListItems = function (cities) {
 };
 
 var sunAndMoon = function (city) {
-    
     var dailyWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + appId;
-    var sunContainerEl = $('#sun');
-
     var moonDate = moment().unix();
     var moonPhaseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + moonDate;
     var moonContainerEl = $('#moon');
+    var sunContainerEl = $('#sun');
 
     $.get(dailyWeatherUrl)
         .then(function (data) {
@@ -132,6 +132,8 @@ var sunAndMoon = function (city) {
 
             var sunsetEl = $('<p>').html('Sunset: <span>' + moment(data.sys.sunset * 1000).format('LT') + '</span>');
             sunContainerEl.append(sunsetEl);
+
+            updateVirtualSky(data.coord);
         });
 
     $.get(moonPhaseUrl)
@@ -149,6 +151,10 @@ var sunAndMoon = function (city) {
         });
 };
 
+var updateVirtualSky = function(coords) {
+    virtualSkyEl.attr('src', virtualSkyUrlBase + '&latitude=' + coords.lat + '&longitude=' + coords.lon);
+};
+
 searchBtnEl.on('click', function () {
     var city = cityInputEl.val().trim();
     cityInputEl.val('');
@@ -162,9 +168,3 @@ searchBtnEl.on('click', function () {
 });
 
 createListItems(cities);
-
-
-// var createSkyMap = function() {
-//     var skyMapEl = $('<iframe src="https://virtualsky.lco.global/embed/index.html?longitude="' + longitude + '"&latitude="'  + latitude + '"&projection=polar">');
-//     skyMapContainer.append(skyMapEl);
-// };
