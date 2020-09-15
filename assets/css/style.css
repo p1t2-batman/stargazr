@@ -152,6 +152,7 @@ label.active {
 
 #search-history-item {
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 #search-btn {
