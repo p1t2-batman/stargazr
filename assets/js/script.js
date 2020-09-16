@@ -5,7 +5,7 @@ var weatherContainerEl = $('.weather-container');
 var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 var virtualSkyEl = $('#virtual-sky');
-var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273'; // &longitude=-119.86286000000001&latitude=34.4326
+var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273';
 
 var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
@@ -102,8 +102,8 @@ var createListItems = function (cities) {
         var cityEl = $('<li id="search-history-item">');
         cityEl.text(city);
         cityEl.on('click', function () {
-                getWeatherByCity(city, true);
-                sunAndMoon(city);
+            getWeatherByCity(city, true);
+            sunAndMoon(city);
         });
 
         cityListEl.append(cityEl);
@@ -120,11 +120,11 @@ var sunAndMoon = function (city) {
     $.get(dailyWeatherUrl)
         .then(function (data) {
             sunContainerEl.empty();
-            
+
             var sunTitleEl = $('<h3>').text("Solar Schedule");
             sunContainerEl.append(sunTitleEl);
 
-            var sunImgEl = $('<img>').attr('src',  './assets/images/sun.png');
+            var sunImgEl = $('<img>').attr('src', './assets/images/sun (1).png');
             sunContainerEl.append(sunImgEl);
 
             var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise * 1000).format('LT') + '</span>');
@@ -151,7 +151,7 @@ var sunAndMoon = function (city) {
         });
 };
 
-var updateVirtualSky = function(coords) {
+var updateVirtualSky = function (coords) {
     virtualSkyEl.attr('src', virtualSkyUrlBase + '&latitude=' + coords.lat + '&longitude=' + coords.lon);
 };
 

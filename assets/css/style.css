@@ -2,7 +2,9 @@
     --dark-grey: #1B1B1B;
     --light-grey: #666666;
     --light-purple: #C58ED1;
-    --light-black: #000000a9;
+    --light-black: #1a1a1a;
+    --purple: #6F4C99;
+    --silver: #AAA;
 }
 
 /* General Styling */
@@ -21,7 +23,7 @@ body {
     font-size: 1.5rem;
 }
 
-main{
+main {
     border-top: 1px solid var(--light-grey);
     border-bottom: 1px solid var(--light-grey);
 }
@@ -39,7 +41,7 @@ button {
 /* Hero Styling */
 #hero h1 {
     font-size: 4em;
-    color: #aaa;
+    color: var(--silver);
     font-family: 'Gruppo', cursive;
     text-transform: none;
     padding: 20px 40px;
@@ -60,7 +62,7 @@ button {
 /* Header Styling */
 .heading {
     align-self: center;
-    color: #aaa;
+    color: var(--silver);
     font-weight: 100;
     text-align: center;
     text-transform: uppercase;
@@ -84,13 +86,13 @@ button {
 .heading::before {
     left: -20px;
     transform: translate(-100%, -50%);
-    background-image: linear-gradient(to right, transparent 10%, #6f4c99 100%);
+    background-image: linear-gradient(to right, transparent 10%, var(--purple) 100%);
 }
 
 .heading::after {
     right: -20px;
     transform: translate(100%, -50%);
-    background-image: linear-gradient(to left, transparent 10%, #6f4c99 100%);
+    background-image: linear-gradient(to left, transparent 10%, var(--purple) 100%);
 }
 
 /* Virtual Map Styling */
@@ -103,7 +105,7 @@ button {
 
 .star-map {
     margin: 10px 0;
-    margin-bottom: 20px;
+    margin-bottom: 65px;
 }
 
 iframe {
@@ -116,8 +118,6 @@ iframe {
 #map-container {
     padding-right: 30px;
 }
-
-/* City Search Container Styling */
 
 /* Input Styling */
 input:focus {
@@ -164,22 +164,21 @@ label.active {
     color: white;
 }
 
-#search-btn:hover{
+#search-btn:hover {
     background-color: var(--light-purple);
     color: var(--dark-grey);
 }
 
-#search-btn > span{
+#search-btn>span {
     line-height: 1.5;
     padding: 0;
 }
 
-#search-btn:hover span{
+#search-btn:hover span {
     font-weight: bold;
 }
 
 /* City History List styling */
-
 #search-history-item {
     background-color: var(--light-grey);
     padding: 10px 30px;
@@ -198,14 +197,15 @@ label.active {
 .hide {
     display: none;
 }
-#weather-section{
+
+#weather-section {
     background-color: black;
-    height: 260px; 
+    height: 260px;
     border-top: 1px solid var(--light-grey);
     border-bottom: 1px solid var(--light-grey);
 }
 
-#weather-header{
+#weather-header {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -218,18 +218,19 @@ label.active {
 #weather-header h2 {
     display: inline;
     font-size: 30px;
-} 
+}
 
 
-#weather-header h2 > span, #sun-moon-heading h2 > span{
-    color: white;
+#weather-header h2>span,
+#sun-moon-heading h2>span {
+    color: var(--silver);
     font-size: 40px;
 }
 
 .weather-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .weather-card {
@@ -246,11 +247,12 @@ label.active {
     margin: 20px 0 0 0;
 }
 
-.weather-card img{
+.weather-card img {
     height: 70px;
 }
 
-.weather-card p, .weather-card span{
+.weather-card p,
+.weather-card span {
     font-size: max(12px, 1vw);
 }
 
@@ -260,7 +262,7 @@ label.active {
 }
 
 /* Sun & Moon Section Styling */
-#sun-moon-heading{
+#sun-moon-heading {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,12 +270,12 @@ label.active {
     text-transform: uppercase;
 }
 
-#sun-moon-heading h2{
+#sun-moon-heading h2 {
     font-size: 30px;
     margin: 20px 0 0 0;
 }
 
-#sun-moon-container{
+#sun-moon-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -281,34 +283,39 @@ label.active {
     margin: 10px 0 0 0;
     padding: 0;
 }
+
 #sun-moon h3 {
     font-size: 1.2vw;
     text-align: center;
-    color: white;
+    color: var(--silver);
     font-family: 'Gruppo', 'cursive';
     margin: 10px 0 0 0;
     text-transform: uppercase;
 }
 
-#sun-moon img{
+#sun-moon img {
     padding: 10px;
     height: 70px;
 }
+
 #moon-heading {
     margin-left: 40px;
 }
 
-#sun, #moon {
+#sun,
+#moon {
     flex-direction: column;
     padding: 0;
 }
 
-#sun p, #moon p {
+#sun p,
+#moon p {
     white-space: nowrap;
     font-size: 1.2vw;
 }
 
-#sun span, #moon span {
+#sun span,
+#moon span {
     color: white;
 }
 
@@ -326,87 +333,96 @@ footer {
     color: white;
 }
 
-footer a{
+footer a {
     color: var(--light-purple);
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
-footer a:hover{
+footer a:hover {
     color: white;
 }
-footer span{
+
+.team  {
     font-weight: bold;
     color: var(--light-purple);
 }
-footer img{
+
+footer img {
     width: 40px;
     vertical-align: top;
 }
+
 /* Responsive Styling */
 @media screen and (max-width: 1200px) {
-    #hero{
+    #hero {
         height: 200px;
     }
 
-    #weather-wrapper{
+    #weather-wrapper {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0 25px;
     }
 
-    #weather-wrapper{
+    #weather-wrapper {
         padding: 0 40px;
     }
-    #weather-header{
+
+    #weather-header {
         margin: 0;
         padding: 0;
     }
 
-    #weather-section h2{
+    #weather-section h2 {
         margin: 20px 0 0 0;
         font-size: 1em;
     }
 
-    #weather-section h2 > span{
+    #weather-section h2>span {
         font-size: 1.4em;
     }
 
-    .weather-container{
+    .weather-container {
         margin: 10px 0;
     }
-    #weather-section h3{
-       margin: 5px 0; 
-       font-size: 1em;
+
+    #weather-section h3 {
+        margin: 5px 0;
+        font-size: 1em;
     }
 
-    #weather-section img{
+    #weather-section img {
         height: 50px;
         padding: 0;
     }
 
-    #weather-section p{
+    #weather-section p {
         font-size: 0.60em;
     }
-    #weather-section span{
+
+    #weather-section span {
         font-size: 1em;
     }
-    #weather-wrapper{
+
+    #weather-wrapper {
         display: flex;
         flex-direction: column;
     }
 
-    #sun-moon-container{
+    #sun-moon-container {
         margin: 1.5vw 0 0 0;
     }
 
-    #sun-moon{
+    #sun-moon {
         padding: 1vw 1.5vw 0 50px;
     }
-    #sun-moon-container h3{
+
+    #sun-moon-container h3 {
         font-size: 0.8em;
     }
-    #sun-moon-container img{
+
+    #sun-moon-container img {
         margin: 5px 0;
     }
 
@@ -415,105 +431,110 @@ footer img{
         width: 300px;
     }
 
-    #search-history li{
+    #search-history li {
         font-size: 1.3vw;
     }
-    
+
 }
 
 @media screen and (max-width: 992px) {
-    #weather-section h3{
+    #weather-section h3 {
         font-size: 1.5vw;
     }
 
-    #weather-wrapper, #sun-moon{
+    #weather-wrapper,
+    #sun-moon {
         margin: 0;
         padding: 1.4vw 0;
     }
-    
-    .heading::before, .heading::after{
-        width: 20vw;
-    }
-}
-@media screen and (max-width: 600px) {
-    #hero{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 120px;
-    }
-    #hero h1{
-        margin: 0;
-        padding: 0;
-    }
 
-    #weather-section{
-        height: 420px;
-    }
-
-    #weather-section h3{
-        font-size: 3vw;
-        text-align: center;
-        margin: 10px; 
-    }
-    
-    #weather-wrapper, #sun-moon{
-        margin: 0;
-        padding: 0;
-    }
-    
-    .weather-container{
-        margin: 0;
-        padding: 0;
-    }
-
-    #sun-moon-container{
-        justify-content: space-around;
-    }
-
-    #sun-moon-container img{
-        float: left;
-        margin: 0 20px 0 0;
-        padding: 0;
-    }
-    #sun-moon-container p{
-        font-size: 2.5vw;
-    }
-
-    #sun, #moon{
-        margin: 0 20px;
-    }
-    #sky-header h2{
-        font-size: 7vw;
-    }
     .heading::before,
     .heading::after {
         width: 20vw;
     }
 
-    .star-map{
+}
+
+@media screen and (max-width: 600px) {
+    #hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+    }
+
+    #hero h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    #weather-section {
+        height: 420px;
+    }
+
+    #weather-section h3 {
+        font-size: 3vw;
+        text-align: center;
+        margin: 10px;
+    }
+
+    #weather-wrapper,
+    #sun-moon {
+        margin: 0;
+        padding: 0;
+    }
+
+    .weather-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    #sun-moon-container {
+        justify-content: space-around;
+    }
+
+    #sun-moon-container img {
+        float: left;
+        margin: 0 20px 0 0;
+        padding: 0;
+    }
+
+    #sun-moon-container p {
+        font-size: 2.5vw;
+    }
+
+    #sun,
+    #moon {
+        margin: 0 20px;
+    }
+
+    #sky-header h2 {
+        font-size: 7vw;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 20vw;
+    }
+
+    .star-map {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0 20px;
     }
 
-    #city-search-container, #map-container{
+    #city-search-container,
+    #map-container {
         padding: 0 20px;
         margin: 20px;
     }
 
-    #search-history-list li{
+    #search-history-list li {
         font-size: 3vw;
     }
 
-    footer{
+    footer {
         flex-direction: column;
     }
 }
-
-
-
-
-
-
