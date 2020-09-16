@@ -19,80 +19,79 @@
     </header>
     <main>
         <section class="row" id="weather-section">
-            <div class="col s8" id="weather-wrapper">
-                <div class="col s3" id="weather-header">
+            <div class="col s12 m7 l7 xl8" id="weather-wrapper">
+                <div class="col xl3" id="weather-header">
                     <h2>Tonight's <span>Weather</span></h2>
-                    <span class="vertical-line"></span>
                 </div>
 
-                <div class="weather-container">
-                    <div class="weather-card col s3">
+                <div class="weather-container col l12 xl9">
+                    <div class="weather-card col">
                         <h3>7 PM</h3>
                         <img src="https://via.placeholder.com/60"/>
-                        <p>Desc: <span id="desc">Lightly Cloudly</span></p>
+                        <p><span id="desc">Lightly Cloudly</span></p>
                         <p>Temp: <span>86</span></p>
                         <p>Clouds: <span>48%</span></p>
                         <p>Rain: <span>76%</span></p>
                     </div>
-                    <div class="weather-card col s3">
+                    <div class="weather-card col">
                         <h3>7 PM</h3>
                         <img src="https://via.placeholder.com/60"/>
-                        <p>Desc: <span id="desc">Lightly Cloudly</span></p>
+                        <p><span id="desc">Lightly Cloudly</span></p>
                         <p>Temp: <span>86</span></p>
                         <p>Clouds: <span>48%</span></p>
                         <p>Rain: <span>76%</span></p>
                     </div>
-                    <div class="weather-card col s3">
+                    <div class="weather-card col">
                         <h3>7 PM</h3>
                         <img src="https://via.placeholder.com/60"/>
-                        <p>Desc: <span id="desc">Lightly Cloudly</span></p>
+                        <p><span id="desc">Lightly Cloudly</span></p>
                         <p>Temp: <span>86</span></p>
                         <p>Clouds: <span>48%</span></p>
                         <p>Rain: <span>76%</span></p>
                     </div>
-                    <div class="weather-card col s3">
+                    <div class="weather-card col">
                         <h3>7 PM</h3>
                         <img src="https://via.placeholder.com/60"/>
-                        <p>Desc: <span id="desc">Lightly Cloudly</span></p>
+                        <p><span id="desc">Lightly Cloudly</span></p>
                         <p>Temp: <span>86</span></p>
                         <p>Clouds: <span>48%</span></p>
                         <p>Rain: <span>76%</span></p>
                     </div>
-                    <div class="weather-card col s3">
+                    <div class="weather-card col">
                         <h3>7 PM</h3>
                         <img src="https://via.placeholder.com/60"/>
-                        <p>Desc: <span id="desc">Lightly Cloudly</span></p>
+                        <p><span id="desc">Lightly Cloudly</span></p>
                         <p>Temp: <span>86</span></p>
                         <p>Clouds: <span>48%</span></p>
                         <p>Rain: <span>76%</span></p>
                     </div>
                 </div>
             </div>
-            <div class="col s4" id="sun-moon">
+            <div class="col s12 m5 l5 xl4" id="sun-moon">
                 <div id="sun-moon-heading">
                     <h2>Tonight's <span>Sun & Moon</span></h2>
                 </div>
                 <div id="sun-moon-container">
-                    <div class="col s6" id="sun">
-                        <h3>SOLAR SCHEDULE</h3>
-                        <img src="https://via.placeholder.com/60"/>
-                        <p>Sunset: <span>7:38 PM</span></p>
-                        <p>Sunrise: <span>7:18 AM</span></p>
+                    <div class="col" id="sun">
+                        <h3>Solar Schedule</h3>
+                        <img src="https://via.placeholder.com/60" />
+                        <p>Sunrise: <span>7:00 am</span></p>
+                        <p>Sunset: <span>8:00 pm</span></p>
                     </div>
-                    <div class="col s6" id="moon">
-                        <h3>MOON PHASE</h3>
-                        <img src="https://via.placeholder.com/60"/>
-                        <p>Waning Crescent</p>
+                    <div class="col" id="moon">
+                        <h3>Moon Phase</h3>
+                        <img src="./assets/images/moon/30.png" />
+                        <p>Waning Moon</p>
                     </div>
                 </div>
             </div>
         </section>
         <section>
             <div class="center" id="sky-header">
-                <h2 class="heading">Virtual Sky</h2>
+                <h2 class="heading hide">Virtual Sky</h2>
             </div>
             <div class="row star-map">
-                <div class="col s3" id="city-search-container">
+                <div class="col s12 m3 l3 xl3" id="city-search-container">
                     <div class="city-search">
                         <div class="input-field">
                             <input autocomplete="off" type="text" id="city" name="city" />
@@ -106,31 +105,21 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col s9 center" id="map-container">
+                <div class="col s12 m9 l9 xl9 center" id="map-container">
                     <iframe id="virtual-sky" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
                         src="https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273"
                         allowTransparency="true"></iframe>
                 </div>
             </div>
         </section>
-        <!-- <section class="hide" id="weather-section">
-            <div class="center" id="weather-header">
-                <h2 class="heading">Weather</h2>
-            </div>
-            <div id="weather-container"></div>
-            <div id="sun-moon">
-                <div id="sun-heading">
-                    <h4>SUN</h4>
-                </div>
-                <div id="sun"></div>
-                <div id="moon-heading">
-                    <h4>MOON</h4>
-                </div>
-                <div id="moon"></div>
-            </div>
-        </section> -->
     </main>
     <footer>
+        <div>
+            <a href="https://github.com/p1t2-batman/stargazr">Check out our GitHub Repo!</a>
+        </div>
+        <div>
+            Made by <span>Team Batman</span> <img src="./assets/images/batman.png" />     
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"

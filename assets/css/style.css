@@ -21,9 +21,9 @@ body {
     font-size: 1.5rem;
 }
 
-/* main {
-    margin: 0px 50px;
-} */
+main{
+    border: 1px solid var(--light-grey);
+}
 
 button {
     border: none;
@@ -199,7 +199,7 @@ label.active {
 }
 #weather-section{
     background-color: black;
-    height: 250px; 
+    height: 260px; 
     border-top: 1px solid var(--light-grey);
     border-bottom: 1px solid var(--light-grey);
 }
@@ -227,18 +227,18 @@ label.active {
 
 .weather-container {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
+    justify-content: space-between; 
 }
 
 .weather-card {
-    margin-bottom: 20px;
     font-family: 'Roboto', 'san-serif';
     font-weight: 300;
     text-align: center;
 }
 
 .weather-card h3 {
-    font-size: 30px;
+    font-size: 1.3vw;
     text-align: center;
     color: white;
     font-family: 'Gruppo', 'cursive';
@@ -248,15 +248,15 @@ label.active {
 .weather-card img{
     height: 70px;
 }
+
 .weather-card p, .weather-card span{
-    font-size: 16px;
+    font-size: max(12px, 1vw);
 }
 
 .weather-card span {
     color: white;
     text-transform: capitalize;
 }
-
 
 /* Sun & Moon Section Styling */
 #sun-moon-heading{
@@ -275,12 +275,13 @@ label.active {
 #sun-moon-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     text-align: center;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
 }
 #sun-moon h3 {
-    font-size: 25px;
+    font-size: 1.2vw;
     text-align: center;
     color: white;
     font-family: 'Gruppo', 'cursive';
@@ -289,7 +290,7 @@ label.active {
 }
 
 #sun-moon img{
-    padding: 5px 0;
+    padding: 10px;
     height: 70px;
 }
 #moon-heading {
@@ -303,6 +304,7 @@ label.active {
 
 #sun p, #moon p {
     white-space: nowrap;
+    font-size: 1.2vw;
 }
 
 #sun span, #moon span {
@@ -312,31 +314,188 @@ label.active {
 /* Footer Style */
 footer {
     background-image: url("../images/stargazr-bg.jpg");
-    height: 150px;
+    height: 75px;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    color: white;
 }
 
+footer a{
+    color: var(--light-purple);
+    font-size: 1.2em;
+}
+
+footer a:hover{
+    color: white;
+}
+footer span{
+    font-weight: bold;
+    color: var(--light-purple);
+}
+footer img{
+    width: 40px;
+    vertical-align: top;
+}
 /* Responsive Styling */
-@media screen and (max-width: 580px) {
-    div{
+@media screen and (max-width: 1200px) {
+    #hero{
+        height: 200px;
+    }
+
+    #weather-wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    #weather-wrapper{
+        padding: 0 40px;
+    }
+    #weather-header{
+        margin: 0;
+        padding: 0;
+    }
+
+    #weather-section h2{
+        margin: 20px 0 0 0;
+        font-size: 1em;
+    }
+
+    #weather-section h2 > span{
+        font-size: 1.4em;
+    }
+
+    .weather-container{
+        margin: 10px 0;
+    }
+    #weather-section h3{
+       margin: 5px 0; 
+       font-size: 1em;
+    }
+
+    #weather-section img{
+        height: 50px;
+        padding: 0;
+    }
+
+    #weather-section p{
+        font-size: 0.60em;
+    }
+    #weather-section span{
+        font-size: 1em;
+    }
+    #weather-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #sun-moon-container{
+        margin: 1.5vw 0 0 0;
+    }
+
+    #sun-moon{
+        padding: 1vw 1.5vw 0 50px;
+    }
+    #sun-moon-container h3{
+        font-size: 0.8em;
+    }
+    #sun-moon-container img{
+        margin: 5px 0;
+    }
+
+    #search-history li{
+        font-size: 1.3vw;
+    }
+    
+}
+@media screen and (max-width: 992px) {
+    #weather-section h3{
+        font-size: 1.5vw;
+    }
+
+    #weather-wrapper, #sun-moon{
+        margin: 0;
+        padding: 1.4vw 0;
+    }
+}
+@media screen and (max-width: 600px) {
+    #hero{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+    }
+    #hero h1{
+        margin: 0;
+        padding: 0;
+    }
+
+    #weather-section{
+        height: 420px;
+    }
+
+    #weather-section h3{
+        font-size: 3vw;
+        text-align: center;
+        margin: 10px; 
+    }
+    
+    #weather-wrapper, #sun-moon{
+        margin: 0;
+        padding: 0;
+    }
+    
+    .weather-container{
+        margin: 0;
+        padding: 0;
+    }
+
+    #sun-moon-container{
+        justify-content: space-around;
+    }
+
+    #sun-moon-container img{
+        float: left;
+        margin: 0 20px 0 0;
+        padding: 0;
+    }
+    #sun-moon-container p{
+        font-size: 2.5vw;
+    }
+
+    #sun, #moon{
+        margin: 0 20px;
+    }
+
+    .star-map{
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    .heading{
-        font-size: 2.8rem;
-    }
-    .heading::before, .heading::after {
-        width: 100%;
+        margin: 0 20px;
     }
 
+    #city-search-container, #map-container{
+        padding: 0 20px;
+        margin: 20px;
+    }
 
+    #search-history-list li{
+        font-size: 3vw;
+    }
+
+    footer{
+        flex-direction: column;
+    }
 }
 
-@media screen and (max-width: 768px) {}
 
-@media screen and (max-width: 992px) {}
 
-@media screen and (max-width: 1200px) {}
+
+
+

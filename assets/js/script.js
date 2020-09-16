@@ -81,7 +81,7 @@ var buildWeather = function (forecastData) {
         var weatherImgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + weatherImg + '@2x.png');
         weatherCardEl.append(weatherImgEl);
 
-        var weatherDescEl = $('<p>').html('Desc: <span>' + data.weather[0].description + '</span>');
+        var weatherDescEl = $('<p>').html('<span>' + data.weather[0].description + '</span>');
         weatherCardEl.append(weatherDescEl);
 
         var tempEl = $('<p>').html('Temp: <span>' + Math.round(data.main.temp) + '&deg;</span>');
