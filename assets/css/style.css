@@ -75,7 +75,7 @@ button {
     display: block;
     height: .075em;
     min-height: 1px;
-    width: 500px;
+    width: 70%;
     position: absolute;
     top: 50%;
 }
@@ -409,11 +409,17 @@ footer img{
         margin: 5px 0;
     }
 
+    .heading::before,
+    .heading::after {
+        width: 300px;
+    }
+
     #search-history li{
         font-size: 1.3vw;
     }
     
 }
+
 @media screen and (max-width: 992px) {
     #weather-section h3{
         font-size: 1.5vw;
@@ -422,6 +428,10 @@ footer img{
     #weather-wrapper, #sun-moon{
         margin: 0;
         padding: 1.4vw 0;
+    }
+    
+    .heading::before, .heading::after{
+        width: 20vw;
     }
 }
 @media screen and (max-width: 600px) {
@@ -471,6 +481,13 @@ footer img{
 
     #sun, #moon{
         margin: 0 20px;
+    }
+    #sky-header h2{
+        font-size: 7vw;
+    }
+    .heading::before,
+    .heading::after {
+        width: 20vw;
     }
 
     .star-map{
