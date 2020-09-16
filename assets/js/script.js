@@ -11,40 +11,7 @@ var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
 
     $.get(weatherUrl)
-        .then(function (data) {
-            // set start of window
-            var start = moment().minutes(0).seconds(0);
-
-            if (start.hour() >= 6) {
-                start.hour(18);
-            }
-
-            // adjust start of window for UTC offset
-            start = start.utc();
-            start.hour(Math.round(start.hour() / 3) * 3)
-            start = start.unix();
-
-            // set end of window
-            var end = moment().minutes(0).seconds(0);
-
-            if (end.hour() < 6) {
-                end.hour(6);
-            } else {
-                end.hour(6).add(1, 'd');
-            }
-
-            // adjust end of window for UTC offset
-            end = end.utc();
-            end.hour(Math.round(end.hour() / 3) * 3)
-            end = end.unix();
-
-            data.list = data.list.filter(function (d) {
-                var dt = moment(d.dt * 1000).unix();
-                return dt >= start && dt <= end;
-            });
-
-            buildWeather(data.list);
-        })
+        .then(handleWeatherResponse)
         .then(function () {
             if (!isButtonClick) {
                 cities.unshift(city);
@@ -58,17 +25,47 @@ var getWeatherByCity = function (city, isButtonClick) {
         });
 };
 
-var getWeatherForCurrentLocation = function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-        console.log(pos);
+var handleWeatherResponse = function (data) {
+    // set start of window
+    var start = moment().minutes(0).seconds(0);
+
+    if (start.hour() >= 6) {
+        start.hour(18);
+    }
+
+    // adjust start of window for UTC offset
+    start = start.utc();
+    start.hour(Math.round(start.hour() / 3) * 3)
+    start = start.unix();
+
+    // set end of window
+    var end = moment().minutes(0).seconds(0);
+
+    if (end.hour() < 6) {
+        end.hour(6);
+    } else {
+        end.hour(6).add(1, 'd');
+    }
+
+    // adjust end of window for UTC offset
+    end = end.utc();
+    end.hour(Math.round(end.hour() / 3) * 3)
+    end = end.unix();
+
+    data.list = data.list.filter(function (d) {
+        var dt = moment(d.dt * 1000).unix();
+        return dt >= start && dt <= end;
     });
-};
+
+    buildWeather(data.list);
+}
 
 // building weather cards to hold data
 var buildWeather = function (forecastData) {
     weatherContainerEl.empty();
     var weatherSectionEl = $('#weather-section');
-    weatherSectionEl.removeClass('hide');
+    // weatherSectionEl.removeClass('hide');
+    weatherSectionEl.addClass('expanded');
 
     $.each(forecastData, function (i, data) {
         var weatherCardEl = $('<div class="weather-card col s3">');
@@ -168,3 +165,15 @@ searchBtnEl.on('click', function () {
 });
 
 createListItems(cities);
+
+navigator.geolocation.getCurrentPosition(function (pos) {
+    console.log(pos);
+
+    var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&units=imperial&appid=' + appId;
+
+    $.get(weatherUrl)
+        .then(function (data) {
+            handleWeatherResponse(data);
+            sunAndMoon(data.city.name);
+        });
+});
