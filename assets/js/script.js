@@ -5,6 +5,8 @@ var weatherContainerEl = $('.weather-container');
 var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 var virtualSkyEl = $('#virtual-sky');
+var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273'; // &longitude=-119.86286000000001&latitude=34.4326
+var modal = document.getElementById("myModal");
 var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273';
 
 var getWeatherByCity = function (city, isButtonClick) {
@@ -21,7 +23,22 @@ var getWeatherByCity = function (city, isButtonClick) {
                 createListItems(cities);
             }
         }, function () {
-            alert('Could not find city');
+            //alert('Could not find city');
+            // create a modal 
+            modal.style.display = "block";
+            
+            // close modal
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
         });
 };
 
@@ -161,6 +178,7 @@ searchBtnEl.on('click', function () {
     }
 
     getWeatherByCity(city);
+    console.log('I am called',city);
     sunAndMoon(city);
 });
 

@@ -14,9 +14,11 @@
 </head>
 
 <body>
-    <header id="hero">
+    <div class="row">
+        <header class="col l12" id="hero">
         <h1>STARGAZR</h1>
     </header>
+    </div>
     <main>
         <section class="row" id="weather-section">
             <div class="col s12 m7 l7 xl8" id="weather-wrapper">
@@ -60,6 +62,33 @@
                 </div>
             </div>
         </section>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>City not found, please try again!</p>
+        </div>
+
+        </div>
+
+        <!-- <section class="hide" id="weather-section">
+            <div class="center" id="weather-header">
+                <h2 class="heading">Weather</h2>
+            </div>
+            <div id="weather-container"></div>
+            <div id="sun-moon">
+                <div id="sun-heading">
+                    <h4>SUN</h4>
+                </div>
+                <div id="sun"></div>
+                <div id="moon-heading">
+                    <h4>MOON</h4>
+                </div>
+                <div id="moon"></div>
+            </div>
+        </section> -->
     </main>
     <footer>
         <div>
@@ -78,7 +107,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
