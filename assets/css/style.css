@@ -474,7 +474,7 @@ footer img {
         padding: 0;
     }
 
-    #weather-section {
+    #weather-section.expanded {
         height: 420px;
     }
 
