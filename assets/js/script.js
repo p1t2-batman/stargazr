@@ -5,9 +5,8 @@ var weatherContainerEl = $('.weather-container');
 var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 var virtualSkyEl = $('#virtual-sky');
-var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273'; // &longitude=-119.86286000000001&latitude=34.4326
-var modal = document.getElementById("myModal");
 var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273';
+var modal = document.getElementById("myModal");
 
 var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
@@ -23,21 +22,20 @@ var getWeatherByCity = function (city, isButtonClick) {
                 createListItems(cities);
             }
         }, function () {
-            //alert('Could not find city');
             // create a modal 
             modal.style.display = "block";
-            
+
             // close modal
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
-            span.onclick = function() {
+            span.onclick = function () {
                 modal.style.display = "none";
             }
             // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
             }
         });
 };
@@ -81,7 +79,6 @@ var handleWeatherResponse = function (data) {
 var buildWeather = function (forecastData) {
     weatherContainerEl.empty();
     var weatherSectionEl = $('#weather-section');
-    // weatherSectionEl.removeClass('hide');
     weatherSectionEl.addClass('expanded');
 
     $.each(forecastData, function (i, data) {
@@ -178,14 +175,12 @@ searchBtnEl.on('click', function () {
     }
 
     getWeatherByCity(city);
-    console.log('I am called',city);
     sunAndMoon(city);
 });
 
 createListItems(cities);
 
 navigator.geolocation.getCurrentPosition(function (pos) {
-    console.log(pos);
 
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&units=imperial&appid=' + appId;
 
