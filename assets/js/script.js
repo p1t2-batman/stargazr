@@ -7,45 +7,13 @@ var cities = JSON.parse(localStorage.getItem('cities')) || [];
 var virtualSkyEl = $('#virtual-sky');
 var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273'; // &longitude=-119.86286000000001&latitude=34.4326
 var modal = document.getElementById("myModal");
+var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273';
 
 var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
 
     $.get(weatherUrl)
-        .then(function (data) {
-            // set start of window
-            var start = moment().minutes(0).seconds(0);
-
-            if (start.hour() >= 6) {
-                start.hour(18);
-            }
-
-            // adjust start of window for UTC offset
-            start = start.utc();
-            start.hour(Math.round(start.hour() / 3) * 3)
-            start = start.unix();
-
-            // set end of window
-            var end = moment().minutes(0).seconds(0);
-
-            if (end.hour() < 6) {
-                end.hour(6);
-            } else {
-                end.hour(6).add(1, 'd');
-            }
-
-            // adjust end of window for UTC offset
-            end = end.utc();
-            end.hour(Math.round(end.hour() / 3) * 3)
-            end = end.unix();
-
-            data.list = data.list.filter(function (d) {
-                var dt = moment(d.dt * 1000).unix();
-                return dt >= start && dt <= end;
-            });
-
-            buildWeather(data.list);
-        })
+        .then(handleWeatherResponse)
         .then(function () {
             if (!isButtonClick) {
                 cities.unshift(city);
@@ -74,17 +42,47 @@ var getWeatherByCity = function (city, isButtonClick) {
         });
 };
 
-var getWeatherForCurrentLocation = function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-        console.log(pos);
+var handleWeatherResponse = function (data) {
+    // set start of window
+    var start = moment().minutes(0).seconds(0);
+
+    if (start.hour() >= 6) {
+        start.hour(18);
+    }
+
+    // adjust start of window for UTC offset
+    start = start.utc();
+    start.hour(Math.round(start.hour() / 3) * 3)
+    start = start.unix();
+
+    // set end of window
+    var end = moment().minutes(0).seconds(0);
+
+    if (end.hour() < 6) {
+        end.hour(6);
+    } else {
+        end.hour(6).add(1, 'd');
+    }
+
+    // adjust end of window for UTC offset
+    end = end.utc();
+    end.hour(Math.round(end.hour() / 3) * 3)
+    end = end.unix();
+
+    data.list = data.list.filter(function (d) {
+        var dt = moment(d.dt * 1000).unix();
+        return dt >= start && dt <= end;
     });
-};
+
+    buildWeather(data.list);
+}
 
 // building weather cards to hold data
 var buildWeather = function (forecastData) {
     weatherContainerEl.empty();
     var weatherSectionEl = $('#weather-section');
-    weatherSectionEl.removeClass('hide');
+    // weatherSectionEl.removeClass('hide');
+    weatherSectionEl.addClass('expanded');
 
     $.each(forecastData, function (i, data) {
         var weatherCardEl = $('<div class="weather-card col s3">');
@@ -94,10 +92,10 @@ var buildWeather = function (forecastData) {
         weatherCardEl.append(weatherHourEl);
 
         var weatherImg = data.weather[0].icon;
-        var weatherImgEl = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + weatherImg + '@2x.png');
+        var weatherImgEl = $('<img>').attr('src', 'https://openweathermap.org/img/wn/' + weatherImg + '@2x.png');
         weatherCardEl.append(weatherImgEl);
 
-        var weatherDescEl = $('<p>').html('Desc: <span>' + data.weather[0].description + '</span>');
+        var weatherDescEl = $('<p>').html('<span>' + data.weather[0].description + '</span>');
         weatherCardEl.append(weatherDescEl);
 
         var tempEl = $('<p>').html('Temp: <span>' + Math.round(data.main.temp) + '&deg;</span>');
@@ -118,10 +116,8 @@ var createListItems = function (cities) {
         var cityEl = $('<li id="search-history-item">');
         cityEl.text(city);
         cityEl.on('click', function () {
-                if(city.length > 4){
-                    getWeatherByCity(city, true);
-                }
-                sunAndMoon(city);
+            getWeatherByCity(city, true);
+            sunAndMoon(city);
         });
 
         cityListEl.append(cityEl);
@@ -138,11 +134,11 @@ var sunAndMoon = function (city) {
     $.get(dailyWeatherUrl)
         .then(function (data) {
             sunContainerEl.empty();
-            
+
             var sunTitleEl = $('<h3>').text("Solar Schedule");
             sunContainerEl.append(sunTitleEl);
 
-            var sunImgEl = $('<img>').attr('src',  './assets/images/sun.png');
+            var sunImgEl = $('<img>').attr('src', './assets/images/sun (1).png');
             sunContainerEl.append(sunImgEl);
 
             var sunriseEl = $('<p>').html('Sunrise: <span>' + moment(data.sys.sunrise * 1000).format('LT') + '</span>');
@@ -169,7 +165,7 @@ var sunAndMoon = function (city) {
         });
 };
 
-var updateVirtualSky = function(coords) {
+var updateVirtualSky = function (coords) {
     virtualSkyEl.attr('src', virtualSkyUrlBase + '&latitude=' + coords.lat + '&longitude=' + coords.lon);
 };
 
@@ -187,3 +183,15 @@ searchBtnEl.on('click', function () {
 });
 
 createListItems(cities);
+
+navigator.geolocation.getCurrentPosition(function (pos) {
+    console.log(pos);
+
+    var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&units=imperial&appid=' + appId;
+
+    $.get(weatherUrl)
+        .then(function (data) {
+            handleWeatherResponse(data);
+            sunAndMoon(data.city.name);
+        });
+});
