@@ -205,7 +205,6 @@ label.active {
 
 /* Section Styling */
 /* Weather Section Styling */
-
 #weather-section {
     background-color: black;
     height: 0px;
@@ -333,7 +332,6 @@ label.active {
 }
 
 /* Modal Styling */
-
 #modal {
     position: absolute;
     background: url(tint20.png) 0 0 repeat;
@@ -374,7 +372,7 @@ label.active {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--dark-grey);
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
