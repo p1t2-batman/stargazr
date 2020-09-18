@@ -25,8 +25,6 @@ var getWeatherByCity = function (city, isButtonClick) {
             // create a modal 
             modal.style.display = "block";
 
-            // close modal
-            // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
                 modal.style.display = "none";
@@ -106,6 +104,7 @@ var buildWeather = function (forecastData) {
     })
 };
 
+// create search list items
 var createListItems = function (cities) {
     cityListEl.empty();
 
@@ -162,6 +161,7 @@ var sunAndMoon = function (city) {
         });
 };
 
+// update virtual sky on load using geolocation
 var updateVirtualSky = function (coords) {
     virtualSkyEl.attr('src', virtualSkyUrlBase + '&latitude=' + coords.lat + '&longitude=' + coords.lon);
 };
@@ -180,6 +180,7 @@ searchBtnEl.on('click', function () {
 
 createListItems(cities);
 
+// browser geolocation
 navigator.geolocation.getCurrentPosition(function (pos) {
 
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&units=imperial&appid=' + appId;

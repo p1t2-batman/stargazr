@@ -18,13 +18,16 @@
         <h1>STARGAZR</h1>
     </header>
     <main>
+        <!-- Weather Banner -->
         <section class="row" id="weather-section">
+            <!-- Overnight Weather -->
             <div class="col s12 m7 l7 xl8" id="weather-wrapper">
                 <div class="col xl3" id="weather-header">
                     <h2>Tonight's <span>Weather</span></h2>
                 </div>
                 <div class="weather-container col l12 xl9"></div>
             </div>
+            <!-- Sun & Moon Section -->
             <div class="col s12 m5 l5 xl4" id="sun-moon">
                 <div id="sun-moon-heading">
                     <h2>Tonight's <span>Sun & Moon</span></h2>
@@ -35,24 +38,29 @@
                 </div>
             </div>
         </section>
+            <!-- Virtual Sky Map Section -->
         <section>
+            <!-- Map Header -->
             <div class="center" id="sky-header">
                 <h2 class="heading">Virtual Sky</h2>
             </div>
             <div class="row star-map">
+                <!-- City Search -->
                 <div class="col s12 m3 l3 xl3" id="city-search-container">
                     <div class="city-search">
                         <div class="input-field">
                             <input autocomplete="off" type="text" id="city" name="city" />
                             <label for="city">City</label>
                         </div>
-                        <button class="z-depth-2 waves-effect waves-light" id="search-btn"><span
-                                class="material-icons">search</span></button>
+                        <button class="z-depth-2 waves-effect waves-light" id="search-btn">
+                            <span class="material-icons">search</span>
+                        </button>
                     </div>
                     <div id="search-history">
                         <ul id="search-history-list"></ul>
                     </div>
                 </div>
+                <!-- Virtual Sky Map -->
                 <div class="col s12 m9 l9 xl9 center" id="map-container">
                     <iframe id="virtual-sky" frameborder="0" scroll="auto" scrolling="no" marginheight="0" marginwidth="0"
                         src="https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273"
@@ -60,9 +68,8 @@
                 </div>
             </div>
         </section>
-        <!-- The Modal -->
+        <!-- Modal -->
         <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>City not found, please try again!</p>
