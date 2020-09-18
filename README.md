@@ -3,7 +3,7 @@
 ## Purpose
 Stargazr is an application for people to be able to see an overnight forecast and a current map of the sky at their location to plan a night of stargazing.
 
-## Stargazr Screenshot
+## Screenshot
 <img src="./assets/images/screenshot.jpg" width="400px;">
 
 ## Technologies Used
