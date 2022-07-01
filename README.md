@@ -7,7 +7,7 @@ Stargazr is an application for people to be able to see an overnight forecast an
 <img src="./assets/images/screenshot.jpg" width="400px;">
 
 ## Technologies Used
-- Materialzie
+- Materialize
 - jQuery
 - Moment
 - APIs
